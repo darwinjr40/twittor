@@ -1,5 +1,5 @@
 // imports
-// importScripts('js/sw-utils.js');
+importScripts('js/sw-utils.js');
 
 
 function actualizaCacheDinamico( dynamicCache, req, res ) {

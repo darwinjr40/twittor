@@ -1,7 +1,7 @@
 
 
 var url = window.location.href;
-var swLocation = '/proyecto_add/sw.js';
+var swLocation = '/twittor/sw.js';
 
 
 
