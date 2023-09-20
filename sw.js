@@ -2,26 +2,27 @@
 importScripts('js/sw-utils.js');
 
 
-function actualizaCacheDinamico( dynamicCache, req, res ) {
+// function actualizaCacheDinamico( dynamicCache, req, res ) {
 
 
-    if ( res.ok ) {
+//     if ( res.ok ) {
 
-        return caches.open( dynamicCache ).then( cache => {
+//         return caches.open( dynamicCache ).then( cache => {
 
-            cache.put( req, res.clone() );
+//             cache.put( req, res.clone() );
             
-            return res.clone();
+//             return res.clone();
 
-        });
+//         });
 
-    } else {
-        return res;
-    }
+//     } else {
+//         return res;
+//     }
 
 
 
-}
+// }
+  
 const STATIC_CACHE    = 'static-v4';
 const DYNAMIC_CACHE   = 'dynamic-v2';
 const INMUTABLE_CACHE = 'inmutable-v1';
