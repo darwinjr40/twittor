@@ -114,3 +114,19 @@ self.addEventListener( 'fetch', e => {
 });
 
 
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Mostrar un mensaje o banner personalizado para instalar la PWA
+    e.preventDefault(); // Evita que el navegador muestre su propio mensaje de instalación
+    myInstallButton.addEventListener('click', () => {
+      e.prompt(); // Muestra el mensaje de instalación
+      e.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('El usuario instaló la PWA');
+        } else {
+          console.log('El usuario rechazó la instalación de la PWA');
+        }
+      });
+    });
+  });
+
+
