@@ -74,7 +74,7 @@ self.addEventListener('activate', e => {
 
 
 self.addEventListener( 'fetch', e => {
-    console.log('fetch.. ', res);
+    console.log('fetch.. ', e);
     const respuesta = caches.match( e.request ).then( res => {
         if ( res ) {
             return res;
