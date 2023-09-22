@@ -1,29 +1,4 @@
 
-const options = {
-    body: 'Agrega esta aplicación a tu pantalla de inicio para un acceso rápido.',
-    icon: '../img/icons/icon-72x72.png', // Ruta a un ícono para la notificación
-  };
-
-// Verificar si el navegador admite las notificaciones web
-if ('Notification' in window && navigator.serviceWorker) {
-    // Verificar si las notificaciones están permitidas
-    if (Notification.permission === 'granted') {
-      // Mostrar una notificación informativa
-      new Notification('Agrega esta PWA a tu pantalla de inicio', options);
-    } else if (Notification.permission !== 'denied') {
-      // Pedir permiso al usuario para mostrar notificaciones
-      Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-          // Mostrar una notificación informativa
-          new Notification('Agrega esta PWA a tu pantalla de inicio', options);
-        }
-      });
-    }
-  }
-alert('¡Bienvenido a nuestra aplicación! Puedes agregarla a tu pantalla de inicio para un acceso más rápido.');
-  
-
-
 
 var url = window.location.href;
 var swLocation = '/twittor/sw.js';

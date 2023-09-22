@@ -2,26 +2,6 @@
 importScripts('js/sw-utils.js');
 
 
-// function actualizaCacheDinamico( dynamicCache, req, res ) {
-
-
-//     if ( res.ok ) {
-
-//         return caches.open( dynamicCache ).then( cache => {
-
-//             cache.put( req, res.clone() );
-            
-//             return res.clone();
-
-//         });
-
-//     } else {
-//         return res;
-//     }
-
-
-
-// }
   
 const STATIC_CACHE    = 'static-v4';
 const DYNAMIC_CACHE   = 'dynamic-v2';
@@ -115,7 +95,6 @@ self.addEventListener( 'fetch', e => {
 
 
 window.addEventListener('beforeinstallprompt', (e) => {
-    // Mostrar un mensaje o banner personalizado para instalar la PWA
     e.preventDefault(); // Evita que el navegador muestre su propio mensaje de instalación
     myInstallButton.addEventListener('click', () => {
       e.prompt(); // Muestra el mensaje de instalación
