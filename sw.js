@@ -35,38 +35,38 @@ const APP_SHELL_INMUTABLE = [
 self.addEventListener('install', e => {
 
 
-    const cacheStatic = caches.open( STATIC_CACHE ).then(cache => 
-        cache.addAll( APP_SHELL ));
+    // const cacheStatic = caches.open( STATIC_CACHE ).then(cache => 
+    //     cache.addAll( APP_SHELL ));
 
-    const cacheInmutable = caches.open( INMUTABLE_CACHE ).then(cache => 
-        cache.addAll( APP_SHELL_INMUTABLE ));
+    // const cacheInmutable = caches.open( INMUTABLE_CACHE ).then(cache => 
+    //     cache.addAll( APP_SHELL_INMUTABLE ));
 
+    // e.waitUntil( Promise.all([ cacheStatic, cacheInmutable ])  );
 
-
-    e.waitUntil( Promise.all([ cacheStatic, cacheInmutable ])  );
-
+    console.log( 'Instalado el Service Worker' );
+    console.log(e);
 });
 
 
 self.addEventListener('activate', e => {
     console.log('Service Worker Activado');
-    const respuesta = caches.keys().then( keys => {
+    // const respuesta = caches.keys().then( keys => {
 
-        keys.forEach( key => {
+    //     keys.forEach( key => {
 
-            if (  key !== STATIC_CACHE && key.includes('static') ) {
-                return caches.delete(key);
-            }
+    //         if (  key !== STATIC_CACHE && key.includes('static') ) {
+    //             return caches.delete(key);
+    //         }
 
-            if (  key !== DYNAMIC_CACHE && key.includes('dynamic') ) {
-                return caches.delete(key);
-            }
+    //         if (  key !== DYNAMIC_CACHE && key.includes('dynamic') ) {
+    //             return caches.delete(key);
+    //         }
 
-        });
+    //     });
 
-    });
+    // });
 
-    e.waitUntil( respuesta ); 
+    // e.waitUntil( respuesta ); 
 
 });
 
@@ -75,21 +75,21 @@ self.addEventListener('activate', e => {
 
 self.addEventListener( 'fetch', e => {
     console.log('fetch.. ', e);
-    const respuesta = caches.match( e.request ).then( res => {
-        if ( res ) {
-            return res;
-        } else {
+    // const respuesta = caches.match( e.request ).then( res => {
+    //     if ( res ) {
+    //         return res;
+    //     } else {
 
-            return fetch( e.request ).then( newRes => {
+    //         return fetch( e.request ).then( newRes => {
 
-                return actualizaCacheDinamico( DYNAMIC_CACHE, e.request, newRes );
+    //             return actualizaCacheDinamico( DYNAMIC_CACHE, e.request, newRes );
 
-            });
+    //         });
 
-        }
+    //     }
 
-    });
-    e.respondWith( respuesta );
+    // });
+    // e.respondWith( respuesta );
 });
 
 
