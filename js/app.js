@@ -7,17 +7,19 @@ var swLocation = '/twittor/sw.js';
 
 if ( navigator.serviceWorker ) {
     
-    console.log('swLocation4');
-    
     if ( url.includes('localhost') ) {
         swLocation = '/sw.js';  
     }
     
-    navigator.serviceWorker.register( swLocation );
-    console.log(swLocation + 'asd');
+    console.log('swLocation: ', swLocation);
+    navigator.serviceWorker.register( swLocation )
+        .then( registrado => console.log( 'Se instalo correctamente...', registrado) )
+        .catch( error => console.log( 'Falló la instalación...' , error) );
 }
 
-
+if ( !('serviceWorker' in navigator)) {
+    console.log('Service workers no soportados');
+}
  
 
 

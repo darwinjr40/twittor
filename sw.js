@@ -49,7 +49,7 @@ self.addEventListener('install', e => {
 
 
 self.addEventListener('activate', e => {
-
+    console.log('Service Worker Activado');
     const respuesta = caches.keys().then( keys => {
 
         keys.forEach( key => {
@@ -66,7 +66,7 @@ self.addEventListener('activate', e => {
 
     });
 
-    e.waitUntil( respuesta );
+    e.waitUntil( respuesta ); 
 
 });
 
@@ -94,7 +94,7 @@ self.addEventListener( 'fetch', e => {
 });
 
 
-window.addEventListener('beforeinstallprompt', (e) => {
+self.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault(); // Evita que el navegador muestre su propio mensaje de instalación
     myInstallButton.addEventListener('click', () => {
       e.prompt(); // Muestra el mensaje de instalación
