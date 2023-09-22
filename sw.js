@@ -74,9 +74,8 @@ self.addEventListener('activate', e => {
 
 
 self.addEventListener( 'fetch', e => {
+    console.log('fetch.. ', res);
     const respuesta = caches.match( e.request ).then( res => {
-        console.log(res);
-        console.log('res');
         if ( res ) {
             return res;
         } else {
@@ -94,18 +93,18 @@ self.addEventListener( 'fetch', e => {
 });
 
 
-self.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault(); // Evita que el navegador muestre su propio mensaje de instalación
-    myInstallButton.addEventListener('click', () => {
-      e.prompt(); // Muestra el mensaje de instalación
-      e.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('El usuario instaló la PWA');
-        } else {
-          console.log('El usuario rechazó la instalación de la PWA');
-        }
-      });
-    });
-  });
+// self.addEventListener('beforeinstallprompt', (e) => {
+//     e.preventDefault(); // Evita que el navegador muestre su propio mensaje de instalación
+//     myInstallButton.addEventListener('click', () => {
+//       e.prompt(); // Muestra el mensaje de instalación
+//       e.userChoice.then((choiceResult) => {
+//         if (choiceResult.outcome === 'accepted') {
+//           console.log('El usuario instaló la PWA');
+//         } else {
+//           console.log('El usuario rechazó la instalación de la PWA');
+//         }
+//       });
+//     });
+//   });
 
 
