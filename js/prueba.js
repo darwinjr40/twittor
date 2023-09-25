@@ -17,6 +17,8 @@ window.onload = (e) => {
                     console.log('User dismissed the A2HS prompt');
                 }
                 deferredPrompt = null;
+            }).catch(error => {
+                console.log('error:', error);
             });
     });
 
