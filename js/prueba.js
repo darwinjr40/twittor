@@ -15,7 +15,7 @@ window.onload = (e) => {
         if (deferredPrompt) {
             // Llama a prompt() en respuesta al evento de clic del usuario
             deferredPrompt.prompt();
-
+            console.log('nise-click');
             // Espera la respuesta del usuario
             deferredPrompt.userChoice
                 .then((choiceResult) => {
