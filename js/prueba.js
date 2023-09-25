@@ -6,20 +6,31 @@ window.onload = (e) => {
         e.preventDefault();
         deferredPrompt = e;
         console.log('sw-utils.js');
-        // Show the prompt
-        deferredPrompt.prompt();
-        // Wait for the user to respond to the prompt
-        deferredPrompt.userChoice
-            .then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the A2HS prompt');
-                } else {
-                    console.log('User dismissed the A2HS prompt');
-                }
-                deferredPrompt = null;
-            }).catch(error => {
-                console.log('error:', error);
-            });
     });
+
+
+    const installButton = document.getElementById('install-button');
+    // Asocia la llamada a prompt() al evento clic del botón
+    installButton.addEventListener('click', () => {
+        if (deferredPrompt) {
+            // Llama a prompt() en respuesta al evento de clic del usuario
+            deferredPrompt.prompt();
+
+            // Espera la respuesta del usuario
+            deferredPrompt.userChoice
+                .then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the A2HS prompt');
+                    } else {
+                        console.log('User dismissed the A2HS prompt');
+                    }
+                    deferredPrompt = null;
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+    });
+};
 
 }
